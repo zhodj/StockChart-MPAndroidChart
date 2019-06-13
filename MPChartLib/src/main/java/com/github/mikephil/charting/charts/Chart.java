@@ -232,6 +232,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
         mMaxHighlightDistance = Utils.convertDpToPixel(500f);
 
         mDescription = new Description();
+        mDescription.setText("");
         mLegend = new Legend();
 
         mLegendRenderer = new LegendRenderer(mViewPortHandler, mLegend);

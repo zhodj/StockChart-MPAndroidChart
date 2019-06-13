@@ -86,7 +86,12 @@ public class ChartKLineFragment extends BaseFragment {
             @Override
             public void singleClickListener() {
                 if(land) {
-                    loadIndexData(indexType < 5 ? ++indexType : 1);
+                    if(indexType ==1)
+                    //loadIndexData(indexType < 5 ? ++indexType : 1);
+                    {
+                        loadIndexData(indexType);
+                        ++indexType;
+                    }
                 }else {
                     Intent intent = new Intent(getActivity(), StockDetailLandActivity.class);
                     getActivity().startActivity(intent);
@@ -105,13 +110,16 @@ public class ChartKLineFragment extends BaseFragment {
     private void loadIndexData(int type) {
         indexType = type;
         switch (indexType) {
+            /*
             case 1://成交量
                 combinedchart.doBarChartSwitch(indexType);
-                break;
-            case 2://请求MACD
+                break;*/
+            case 1://请求MACD
                 kLineData.initMACD();
+                kLineData.initKDJ();
                 combinedchart.doBarChartSwitch(indexType);
                 break;
+                /*
             case 3://请求KDJ
                 kLineData.initKDJ();
                 combinedchart.doBarChartSwitch(indexType);
@@ -124,6 +132,7 @@ public class ChartKLineFragment extends BaseFragment {
                 kLineData.initRSI();
                 combinedchart.doBarChartSwitch(indexType);
                 break;
+                */
             default:
                 break;
         }

@@ -59,6 +59,7 @@ public class ChartKLineFragment extends BaseFragment {
         combinedchart.initChart(land);
         try {
             if(mType == 1){
+
                 object = new JSONObject(ChartData.KLINEDATA);
             }else if(mType == 7){
                 object = new JSONObject(ChartData.KLINEWEEKDATA);

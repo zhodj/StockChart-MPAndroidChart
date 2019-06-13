@@ -8,13 +8,14 @@ import com.android.stockapp.common.data.Constants;
 import com.android.stockapp.ui.base.BaseApp;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.converter.SerializableDiskConverter;
+import com.zhouyou.http.model.HttpParams;
 
 
 public class MyApplication extends BaseApp {
     @Override
     public void onCreate() {
         super.onCreate();
-//        netWorkInit();
+        netWorkInit();
         initDayNight();
     }
 
@@ -35,15 +36,18 @@ public class MyApplication extends BaseApp {
         EasyHttp.init(this);
 
         //这里涉及到安全我把url去掉了，demo都是调试通的
-        String Url = "";
+        String Url = "http://api.tushare.pro";
 
 
         //设置请求头
 //        HttpHeaders headers = new HttpHeaders();
 //        headers.put("User-Agent", SystemInfoUtils.getUserAgent(this, AppConstant.APPID));
 //        //设置请求参数
-//        HttpParams params = new HttpParams();
-//        params.put("appId", AppConstant.APPID);
+        HttpParams params = new HttpParams();
+        params.put("api_name", "daily");
+        params.put("token", "");
+        params.put("params", "ts_code='000001.SZ', start_date='20180701', end_date='20180718'");
+
         EasyHttp.getInstance()
                 .debug("RxEasyHttp", true)
                 .setReadTimeOut(60 * 1000)
@@ -57,10 +61,10 @@ public class MyApplication extends BaseApp {
                 .setCacheMaxSize(50 * 1024 * 1024)//设置缓存大小为50M
                 .setCacheVersion(1)//缓存版本为1
 //                .setHostnameVerifier(new UnSafeHostnameVerifier(Url))//全局访问规则
-                .setCertificates();//信任所有证书
+                .setCertificates()//信任所有证书
                 //.addConverterFactory(GsonConverterFactory.create(gson))//本框架没有采用Retrofit的Gson转化，所以不用配置
 //                .addCommonHeaders(headers)//设置全局公共头
-//                .addCommonParams(params);//设置全局公共参数
+                .addCommonParams(params);//设置全局公共参数
 //                .addInterceptor(new CustomSignInterceptor());//添加参数签名拦截器
         //.addInterceptor(new HeTInterceptor());//处理自己业务的拦截器
     }

@@ -15,7 +15,7 @@ public class MyApplication extends BaseApp {
     @Override
     public void onCreate() {
         super.onCreate();
-        netWorkInit();
+        //netWorkInit();
         initDayNight();
     }
 

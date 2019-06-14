@@ -38,4 +38,5 @@ dependencies {
     implementation project(':rxeasyhttp')
     implementation project(':MPChartLib')
     implementation 'com.google.android.material:material:1.0.0'
+    implementation group: 'redis.clients', name: 'jedis', version: '3.0.1'
 }

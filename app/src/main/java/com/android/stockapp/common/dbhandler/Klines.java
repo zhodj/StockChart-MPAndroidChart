@@ -1,5 +1,7 @@
 package com.android.stockapp.common.dbhandler;
 
+import androidx.annotation.NonNull;
+
 public class Klines {
     private String code;
     private String name;
@@ -63,5 +65,11 @@ public class Klines {
 
     public void setOpen(float open) {
         this.open = open;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

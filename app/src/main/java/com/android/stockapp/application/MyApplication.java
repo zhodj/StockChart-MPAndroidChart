@@ -37,16 +37,14 @@ public class MyApplication extends BaseApp {
 
         //这里涉及到安全我把url去掉了，demo都是调试通的
         String Url = "http://api.tushare.pro";
-
-
         //设置请求头
 //        HttpHeaders headers = new HttpHeaders();
 //        headers.put("User-Agent", SystemInfoUtils.getUserAgent(this, AppConstant.APPID));
 //        //设置请求参数
         HttpParams params = new HttpParams();
-        params.put("api_name", "daily");
-        params.put("token", "");
-        params.put("params", "ts_code='000001.SZ', start_date='20180701', end_date='20180718'");
+
+        params.put("token", "fa03504ae22e6c1b2c01a37edebbdd590578cb5891b472919db5d696");
+
 
         EasyHttp.getInstance()
                 .debug("RxEasyHttp", true)
